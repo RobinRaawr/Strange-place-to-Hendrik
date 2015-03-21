@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerAttack : MonoBehaviour {
 
-    private float attackRange = 5f;
+    private float attackRange = 2f;
     private int damage = 1;
 
     void Update()
