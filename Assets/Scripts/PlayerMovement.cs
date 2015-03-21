@@ -3,17 +3,40 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-    public float speed = 15f;
+    public float speed = 8f;
 
     public bool grounded = true;
-    public float jumpPower = 200f;
+    public float jumpPower = 300f;
     private bool hasJumped = false;
+    [HideInInspector]
+    public int direction = 1;
+    public bool right = true;
+
+    Vector3 movement;
+
 
     void Update()
     {
         if (Input.GetButtonDown("Fire1") && grounded == true)
         {
             hasJumped = true;
+        }
+
+        if (right)
+        {
+            if (movement.x < 0)
+            {
+                ChangeDirection(-1);
+                right = false;
+            }
+        }
+        else
+        {
+            if(movement.x > 0)
+            {
+                ChangeDirection(1);
+                right = true;
+            }
         }
     }
 
@@ -22,16 +45,24 @@ public class PlayerMovement : MonoBehaviour {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+        movement = new Vector3(moveHorizontal, 0, moveVertical);
+        //TODO: either play walking anim or idle anim depending on what the movement speed is, watch the performence
 
         transform.position += movement * speed * Time.deltaTime;
 
         if (hasJumped)
         {
+            //TODO: play jump animation
             GetComponent<Rigidbody>().AddForce(new Vector3(0,1,0) * jumpPower);
             grounded = false;
             hasJumped = false;
         }
+    }
+
+    void ChangeDirection(int direction)
+    {
+        this.direction = direction;
+        transform.localScale = new Vector3(direction * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 
     void OnCollisionEnter(Collision col)

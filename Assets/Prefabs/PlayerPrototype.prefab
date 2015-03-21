@@ -13,6 +13,8 @@ GameObject:
   - 54: {fileID: 5432114}
   - 135: {fileID: 13508628}
   - 114: {fileID: 11493868}
+  - 114: {fileID: 11404150}
+  - 114: {fileID: 11406874}
   m_Layer: 0
   m_Name: PlayerPrototype
   m_TagString: Player
@@ -78,6 +80,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &11404150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7938ca99ecf86a42a6d208eb828069c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11406874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd0c6fc6640898489677856da6a0a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11493868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,6 +116,7 @@ MonoBehaviour:
   speed: 8
   grounded: 1
   jumpPower: 300
+  direction: 1
 --- !u!135 &13508628
 SphereCollider:
   m_ObjectHideFlags: 1
