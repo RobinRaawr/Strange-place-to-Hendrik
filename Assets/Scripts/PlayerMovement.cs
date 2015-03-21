@@ -7,13 +7,20 @@ public class PlayerMovement : MonoBehaviour {
 
     public bool grounded = true;
     public float jumpPower = 300f;
-    private bool hasJumped = false;
+    private bool hasJumped = false; 
+    public Animator anim;
+
     [HideInInspector]
     public int direction = 1;
     public bool right = true;
 
     Vector3 movement;
+    Rigidbody body;
 
+    void Awake()
+    {
+        body = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
@@ -47,6 +54,14 @@ public class PlayerMovement : MonoBehaviour {
 
         movement = new Vector3(moveHorizontal, 0, moveVertical);
         //TODO: either play walking anim or idle anim depending on what the movement speed is, watch the performence
+        if (moveHorizontal != 0 || moveVertical != 0)
+        {
+            anim.SetBool("IsWalking", true);
+        }
+        else
+        {
+            anim.SetBool("IsWalking", false);
+        }
 
         transform.position += movement * speed * Time.deltaTime;
 
