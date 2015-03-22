@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -17,6 +18,8 @@ public class PlayerJoin : MonoBehaviour {
     bool P1Pressed = false, P2Pressed = false, P3Pressed = false, P4Pressed = false;
 
     public GameObject[] players = new GameObject[4];
+    public GameObject[] playerSprites = new GameObject[4];
+    public GameObject[] buttons = new GameObject[4];
 
     void Awake()
     {
@@ -73,6 +76,7 @@ public class PlayerJoin : MonoBehaviour {
                 int rnd = characters[Random.Range(0, characters.Count)];
                 characters.Remove(rnd);
                 playerChars[0] = rnd;
+                UpdateGUI(0, rnd);
                 amountPlayers++;
                 P1Pressed = true;
                 Debug.Log("Player1 Joined");
@@ -87,6 +91,7 @@ public class PlayerJoin : MonoBehaviour {
             int rnd = characters[Random.Range(0, characters.Count)];
             characters.Remove(rnd);
             playerChars[1] = rnd;
+            UpdateGUI(1, rnd);
             amountPlayers++;
             P2Pressed = true;
             Debug.Log("Player2 Joined");
@@ -96,6 +101,7 @@ public class PlayerJoin : MonoBehaviour {
             int rnd = characters[Random.Range(0, characters.Count)];
             characters.Remove(rnd);
             playerChars[2] = rnd;
+            UpdateGUI(2, rnd);
             amountPlayers++;
             P3Pressed = true;
             Debug.Log("Player3 Joined");
@@ -105,9 +111,18 @@ public class PlayerJoin : MonoBehaviour {
             int rnd = characters[Random.Range(0, characters.Count)];
             characters.Remove(rnd);
             playerChars[3] = rnd;
+            UpdateGUI(3, rnd);
             amountPlayers++;
             P4Pressed = true;
             Debug.Log("Player4 Joined");
         }
 	}
+
+    void UpdateGUI(int player, int character)
+    {
+        buttons[player].SetActive(false);
+        playerSprites[character - 1].SetActive(true);
+        Vector3 newPos = new Vector3(playerSprites[character - 1].GetComponent<RectTransform>().position.x + (player * 161.7f), playerSprites[character - 1].GetComponent<RectTransform>().position.y, playerSprites[character - 1].GetComponent<RectTransform>().position.z);
+        playerSprites[character - 1].GetComponent<RectTransform>().position = newPos;
+    }
 }
