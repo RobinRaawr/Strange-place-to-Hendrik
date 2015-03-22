@@ -7,6 +7,9 @@ public class PlayerStats : MonoBehaviour {
 
     public int health = 3;
     private bool dead = false;
+    private bool deadAnim = true;
+    public Animator anim;
+    public string playerName;
 
     private Color[] color;
     public int player = 1;
@@ -21,19 +24,29 @@ public class PlayerStats : MonoBehaviour {
         float w = 0.4f;
         color[0] = new Color(s, w, w, a);
         color[1] = new Color(w, s, w, a);
-        color[2] = new Color(w, w, s, a);
+        color[2] = new Color(w, w + 0.3f, s, a);
         color[3] = new Color(s, 0.65f, 0.1f, a);
         //Set the right stats to the right person with the right color
-        SetUIBar(player);
-        SetColor(character);
+        //SetUIBar(player);
+        //SetColor(character);
     }
 
     void Update()
     {
-        if (dead)
-        { 
-            //TODO: play dead animation
-            //TODO: actually die(remove from game, or lay their being dead
+        if (dead && deadAnim)
+        {
+            anim.SetBool("IsDead", true);
+            deadAnim = false;
+            Debug.Log("wtf");
+        //TODO: actually die(remove from game, or lay their being dead
+        }
+        else
+        {
+            anim.SetBool("IsDead", false);
+        }
+        if (transform.FindChild(playerName).localScale.x == 0) 
+        {
+            transform.gameObject.SetActive(false);
         }
     }
 
@@ -52,12 +65,12 @@ public class PlayerStats : MonoBehaviour {
         Debug.Log("HP left: " + health);
     }
 
-    private void SetUIBar(int player)
+    public void SetUIBar(int player)
     {
         UIStats = GameObject.Find("Player" + player + "Stats");
     }
 
-    private void SetColor(int character)
+    public void SetColor(int character)
     {
         Image[] hearts = UIStats.GetComponentsInChildren<Image>();
         foreach (Image image in hearts)
@@ -65,5 +78,13 @@ public class PlayerStats : MonoBehaviour {
             image.color = color[character - 1];
         }
         UIStats.GetComponent<Image>().color = color[character - 1];
+    }
+
+    public void SetControls(int player)
+    {
+        gameObject.GetComponent<PlayerAttack>().fire2 = "Fire2_P" + player;
+        gameObject.GetComponent<PlayerMovement>().fire1 = "Fire1_P" + player;
+        gameObject.GetComponent<PlayerMovement>().horizontal = "Horizontal_P" + player;
+        gameObject.GetComponent<PlayerMovement>().vertical = "Vertical_P" + player;
     }
 }

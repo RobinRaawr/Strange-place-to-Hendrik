@@ -248,7 +248,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.73999977, z: 0}
+  m_LocalPosition: {x: 0, y: -6.80000019, z: 0}
   m_LocalScale: {x: -4.15067577, y: 3.3889854, z: 1}
   m_Children:
   - {fileID: 409634}
@@ -317,7 +317,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.42999995, y: 4.9000001, z: 0}
+  m_LocalPosition: {x: -1.42999995, y: 2.71000004, z: 0}
   m_LocalScale: {x: .140000001, y: .189999998, z: 1}
   m_Children:
   - {fileID: 436646}
@@ -348,7 +348,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.9063501, y: 16.2290668, z: 1.03999996}
+  m_Size: {x: 11.9063501, y: 16.2290668, z: 2.5}
   m_Center: {x: -2.19969821, y: -6.02953291, z: 0}
 --- !u!82 &8212046
 AudioSource:
@@ -447,6 +447,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7938ca99ecf86a42a6d208eb828069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 3
+  anim: {fileID: 9516058}
+  playerName: Hendrik
+  player: 2
+  character: 3
 --- !u!114 &11482288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -459,6 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 9516058}
+  fire2: Fire2_P1
   cooldown: 0
 --- !u!114 &11485184
 MonoBehaviour:
@@ -471,7 +477,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d7484cf9f0eb642b31d1494c2a8c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontal: Horizontal_P1
+  vertical: Vertical_P1
+  fire1: Fire1_P1
   speed: 8
+  verticalSpeed: 2
   grounded: 1
   jumpPower: 300
   anim: {fileID: 9516058}

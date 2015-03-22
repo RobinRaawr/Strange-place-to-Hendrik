@@ -3,7 +3,12 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
+    public string horizontal = "Horizontal_P1";
+    public string vertical = "Vertical_P1";
+    public string fire1 = "Fire1_P1";
+
     public float speed = 8f;
+    public float verticalSpeed = 2f;
 
     public bool grounded = true;
     public float jumpPower = 300f;
@@ -24,7 +29,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && grounded == true)
+        if (Input.GetButtonDown(fire1) && grounded == true)
         {
             hasJumped = true;
         }
@@ -49,10 +54,10 @@ public class PlayerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveHorizontal = Input.GetAxis(horizontal);
+        float moveVertical = Input.GetAxis(vertical);
 
-        movement = new Vector3(moveHorizontal, 0, moveVertical);
+        movement = new Vector3(moveHorizontal, 0, moveVertical);// * verticalSpeed);
         //TODO: either play walking anim or idle anim depending on what the movement speed is, watch the performence
         if (moveHorizontal != 0 || moveVertical != 0)
         {

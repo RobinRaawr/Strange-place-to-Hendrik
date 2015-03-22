@@ -5,6 +5,8 @@ public class PlayerAttack : MonoBehaviour {
     
     public Animator anim;
 
+    public string fire2 = "Fire2_P1";
+
     private float attackRange = 2f;
     private int damage = 1;
 
@@ -25,7 +27,7 @@ public class PlayerAttack : MonoBehaviour {
 
 
         // ATTAAACCKK
-        if (Input.GetButtonDown("Fire2") && cooldown <= 0)
+        if (Input.GetButtonDown(fire2) && cooldown <= 0)
         {
             Attack();
             anim.SetBool("IsAttacking", true);
@@ -38,7 +40,6 @@ public class PlayerAttack : MonoBehaviour {
 
     void Attack()
     {
-        //TODO: play attack animation
         audio.Play();
 
         float direction = GetComponent<PlayerMovement>().direction;
