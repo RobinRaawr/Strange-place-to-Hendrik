@@ -115,7 +115,7 @@ InputManager:
     snap: 0
     invert: 1
     type: 2
-    axis: 0
+    axis: 1
     joyNum: 2
   - serializedVersion: 3
     m_Name: Vertical_P4

@@ -469,6 +469,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 9522156}
+  clips:
+  - {fileID: 8300000, guid: 5c9579af563d2e740996668424a374d7, type: 3}
+  - {fileID: 8300000, guid: afe8369137b9f504abec6c4c04a47824, type: 3}
   fire2: Fire2_P1
   cooldown: 0
 --- !u!114 &11472524

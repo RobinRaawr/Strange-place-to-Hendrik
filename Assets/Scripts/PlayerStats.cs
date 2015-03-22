@@ -37,8 +37,6 @@ public class PlayerStats : MonoBehaviour {
         {
             anim.SetBool("IsDead", true);
             deadAnim = false;
-            Debug.Log("wtf");
-        //TODO: actually die(remove from game, or lay their being dead
         }
         else
         {

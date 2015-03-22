@@ -4,10 +4,12 @@ using System.Collections;
 public class PlayerAttack : MonoBehaviour {
     
     public Animator anim;
+    public AudioClip[] clips;
+    int randomClip;
 
     public string fire2 = "Fire2_P1";
 
-    private float attackRange = 2f;
+    private float attackRange = 3f;
     private int damage = 1;
 
     AudioSource audio;
@@ -15,6 +17,7 @@ public class PlayerAttack : MonoBehaviour {
 
     void Awake()
     {
+
         audio = GetComponent<AudioSource>();
     }
 
@@ -40,6 +43,9 @@ public class PlayerAttack : MonoBehaviour {
 
     void Attack()
     {
+        // Random Audio
+        randomClip = Random.Range(0, 3);
+        audio.clip = clips[randomClip];
         audio.Play();
 
         float direction = GetComponent<PlayerMovement>().direction;
