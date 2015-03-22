@@ -57,6 +57,9 @@ public class PlayerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if (GetComponent<PlayerStats>().dead)
+            return;
+
         float moveHorizontal = Input.GetAxis(horizontal);
         float moveVertical = Input.GetAxis(vertical);
 

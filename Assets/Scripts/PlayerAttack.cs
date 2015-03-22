@@ -47,7 +47,7 @@ public class PlayerAttack : MonoBehaviour {
     void Attack()
     {
         // Random Audio
-        randomClip = Random.Range(0, 3);
+        randomClip = Random.Range(0, 2);
         audio.clip = clips[randomClip];
         audio.Play();
 
