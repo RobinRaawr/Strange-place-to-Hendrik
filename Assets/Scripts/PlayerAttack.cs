@@ -23,6 +23,9 @@ public class PlayerAttack : MonoBehaviour {
 
     void Update()
     {
+        if (GetComponent<PlayerStats>().dead)
+            return;
+
         if (cooldown >= 0)
         {
             cooldown -= Time.deltaTime; 

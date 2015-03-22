@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class PlayerStats : MonoBehaviour {
 
     public int health = 3;
-    private bool dead = false;
+    public bool dead = false;
     private bool deadAnim = true;
     public Animator anim;
     public string playerName;

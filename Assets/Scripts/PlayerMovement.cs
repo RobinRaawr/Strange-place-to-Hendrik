@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update()
     {
+        if (GetComponent<PlayerStats>().dead)
+            return;
+
         if (Input.GetButtonDown(fire1) && grounded == true)
         {
             hasJumped = true;
