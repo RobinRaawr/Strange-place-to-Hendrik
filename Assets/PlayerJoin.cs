@@ -12,6 +12,8 @@ public class PlayerJoin : MonoBehaviour {
     public string fire1_P3 = "Fire1_P3";
     public string fire1_P4 = "Fire1_P4";
 
+    float secretNumber = 108f;
+
     int[] playerChars;
     List<int> characters;
     int amountPlayers = 0;
@@ -122,7 +124,7 @@ public class PlayerJoin : MonoBehaviour {
     {
         buttons[player].SetActive(false);
         playerSprites[character - 1].SetActive(true);
-        Vector3 newPos = new Vector3(playerSprites[character - 1].GetComponent<RectTransform>().position.x + (player * 161.7f), playerSprites[character - 1].GetComponent<RectTransform>().position.y, playerSprites[character - 1].GetComponent<RectTransform>().position.z);
+        Vector3 newPos = new Vector3(playerSprites[character - 1].GetComponent<RectTransform>().position.x + (player * secretNumber * (Screen.width/Screen.height)), playerSprites[character - 1].GetComponent<RectTransform>().position.y, playerSprites[character - 1].GetComponent<RectTransform>().position.z);
         playerSprites[character - 1].GetComponent<RectTransform>().position = newPos;
     }
 }
